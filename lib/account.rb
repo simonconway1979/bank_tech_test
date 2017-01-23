@@ -14,6 +14,10 @@ def deposit(amount)
   @balance += amount
 end
 
+def withdrawal(amount)
+  @balance -= amount
+end
+
 # binding.pry
 
 end
