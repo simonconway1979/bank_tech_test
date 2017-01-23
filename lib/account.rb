@@ -5,14 +5,8 @@ class Account
 def initialize
 @balance = 0
 @transactions = []
-@formatted_transactions = ["date       || credit || debit   || balance"]
+@formatted_transactions
 end
-
-
-# date       || credit || debit   || balance
-# 14/01/2012 ||        || 500.00  || 2500.00
-# 13/01/2012 || 2000.00||         || 3000.00
-# 10/01/2012 || 1000.00||         || 1000.00
 
 def balance
   @balance
@@ -22,8 +16,6 @@ def deposit(amount)
   @balance += amount
   date = Time.now.strftime("%d/%m/%Y")
   @transactions << [date, amount, balance]
-    # binding.pry
-  #@formatted_transactions << date + "||        ||" +
 end
 
 def withdrawal(amount)
@@ -40,9 +32,30 @@ def formatted_transactions
   @formatted_transactions
 end
 
+# date       || credit || debit   || balance
+# 14/01/2012 ||        || 500.00  || 2500.00
+# 13/01/2012 || 2000.00||         || 3000.00
+# 10/01/2012 || 1000.00||         || 1000.00
+
+def update_formatted_transactions
+  @formatted_transactions = ["date       || credit    || debit     || balance"]
+
+  @transactions.each do |transaction|
+    amount_string = -('%.02f' % transaction[1])
+    balance_string = '%.02f' % transaction[1]
+    trailing_spaces = " " * (8 - amount_string.length)
+    if transaction[1] >= 0
+      formatted_text = transaction[0]+" || " + amount_string + trailing_spaces + "||         || " + balance_string
+      @formatted_transactions << formatted_text
+    else
+      formatted_text = transaction[0]+" ||         || " + (amount_string) + trailing_spaces + "|| " + balance_string
+      @formatted_transactions << formatted_text
+    end
+  end
+end
 
 def historical_deposit(date, amount)
-  @balance +=amount
+  @balance += amount
   @transactions << [date, amount, balance]
 end
 
@@ -53,14 +66,12 @@ def historical_withdrawal(date, amount)
 end
 
 
-
-
 private
 
 def withdrawal_valid(amount)
   fail "Your balance is not sufficient to make this withdrawal" if amount > @balance
 end
 
-
+binding.pry
 
 end
