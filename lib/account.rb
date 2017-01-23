@@ -17,14 +17,24 @@ def deposit(amount)
 end
 
 def withdrawal(amount)
+  withdrawal_valid(amount)
   @balance -= amount
   @transactions << [Time.now.strftime("%d/%m/%Y"), -amount, balance]
 end
+
 
 def transactions
   @transactions
 end
 
-# binding.pry
+
+private
+
+def withdrawal_valid(amount)
+  fail "Your balance is not sufficient to make this withdrawal" if amount > @balance
+end
+
+
+binding.pry
 
 end
