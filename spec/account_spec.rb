@@ -55,7 +55,20 @@ describe Account do
       account.historical_withdrawal("14/01/2012", 500)
       expect(account.transactions[-1]).to eq(["14/01/2012", -500, 1500])
     end
+  end
 
+  context 'Printing a statement' do
+    it 'should be able to print a statement of historical transactions in the correct format' do
+      account.historical_deposit("10/01/2012", 1000)
+      account.historical_deposit("13/01/2012", 2000)
+      account.historical_withdrawal("14/01/2012", 500)
+      expect(account.statement).to eq("
+      date       || credit || debit   || balance
+      14/01/2012 ||        || 500.00  || 2500.00
+      13/01/2012 || 2000.00||         || 3000.00
+      10/01/2012 || 1000.00||         || 1000.00
+      ")
+    end
   end
 
 end
