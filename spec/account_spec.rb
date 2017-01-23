@@ -28,6 +28,10 @@ describe Account do
       expect(account.transactions).to be_an(Array)
     end
 
+    it 'should add a transaction including the date and amount when a deposit is made' do
+      account.deposit(10)
+      expect(account.transactions).to eq([(Time.now.strftime("%d/%m/%Y")), 10])
+    end
 
 
   end
