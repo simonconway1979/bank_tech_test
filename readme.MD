@@ -50,3 +50,38 @@ I can print my balance in the correct format
 As a banker,
 Because I want to add user history to the new system,
 I can add previous transactions to an account
+
+
+## Installing
+Clone this repo: https://github.com/simonconway1979/bank_tech_test.git
+In console run bundle
+
+
+## Running tests
+In console run:
+$ rspec
+
+Pry will open when you run rspec.
+Type quit to complete the tests.
+
+
+## Using the application
+
+In console run:
+$ rspec
+
+The program is set up so that pry opens and the 3 historical records are pre-populated.
+
+
+#### Commands
+
+account.statement - prints the current statement
+account.deposit(10) - Deposits £10
+account.withdrawal(5) - Withdraws £5
+account.historical.deposit("12/04/2015", 100) - Deposits £100 with the historical date shown
+account.historical.withdrawal("12/04/2015", 100) - Withdraws £100 with the historical date shown
+
+
+You can make deposits and withdrawals and then print the statement to see the updated totals.
+There is a private method that stops a withdrawal when the balance is not enough to make the withdrawal.
+The statement is formatted so that it aligns nicely. This works for deposits and withdrawals up to £99,999
