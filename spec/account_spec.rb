@@ -1,13 +1,18 @@
 require 'account.rb'
-# require 'pry'
+
+
 
 describe Account do
 
-it 'should have a balance of 0'do
-account = Account.new
-expect(account.balance).to eq(0)
-end
+  subject(:account) {described_class.new}
 
-# binding.pry
+  it 'should have a method to show initial balance of 0'do
+  expect(account.balance).to eq(0)
+  end
+
+  it 'should have a method to make a deposit' do
+
+  end
+
 
 end
