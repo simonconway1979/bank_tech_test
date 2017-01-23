@@ -76,12 +76,21 @@ The program is set up so that pry opens and the 3 historical records are pre-pop
 #### Commands
 
 account.statement - prints the current statement
+
 account.deposit(10) - Deposits £10
+
 account.withdrawal(5) - Withdraws £5
+
 account.historical.deposit("12/04/2015", 100) - Deposits £100 with the historical date shown
+
 account.historical.withdrawal("12/04/2015", 100) - Withdraws £100 with the historical date shown
 
 
 You can make deposits and withdrawals and then print the statement to see the updated totals.
 There is a private method that stops a withdrawal when the balance is not enough to make the withdrawal.
 The statement is formatted so that it aligns nicely. This works for deposits and withdrawals up to £99,999
+
+
+## Next steps
+
+I would like to remove the transaction history and the formatting into a two separate classes.
