@@ -45,10 +45,17 @@ describe Account do
   end
 
   context 'Adding historical transactions' do
-    it 'should be able to add a historical transaction including the date and time of the transaction' do
-      account.historical_deposit("14/01/2012", 500)
-      expect(account.transactions[-1]).to eq(["14/01/2012", 500, 500])
+    it 'should be able to add a historical deposit including the date and time of the transaction' do
+      account.historical_deposit("13/01/2012", 2000)
+      expect(account.transactions[-1]).to eq(["13/01/2012", 2000, 2000])
     end
+
+    it 'should be able to add a historical withdrawal including the date and time of the transaction' do
+      account.historical_deposit("13/01/2012", 2000)
+      account.historical_withdrawal("14/01/2012", 500)
+      expect(account.transactions[-1]).to eq(["14/01/2012", -500, 1500])
+    end
+
   end
 
 end
