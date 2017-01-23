@@ -23,7 +23,7 @@ describe Account do
     end
   end
 
-  context 'printing an account statement' do
+  context 'storing and retrieving transactions' do
     it 'should have an array that shows all deposits and withdrawals' do
       expect(account.transactions).to be_an(Array)
     end
