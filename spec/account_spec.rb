@@ -21,6 +21,10 @@ describe Account do
       account.withdrawal(5)
       expect(account.balance).to eq(5)
     end
+
+    it 'should report an error if a withdrawal is larger than the remaining balance' do
+      expect{account.withdrawal(5)}.to raise_error "Your balance is not sufficient to make this withdrawal"
+    end
   end
 
   context 'storing and retrieving transactions' do
@@ -39,7 +43,7 @@ describe Account do
       expect(account.transactions[-1]).to eq([(Time.now.strftime("%d/%m/%Y")), -5])
     end
 
-binding.pry
+# binding.pry
 
   end
 
