@@ -31,6 +31,12 @@ def historical_deposit(date, amount)
   @transactions << [date, amount, balance]
 end
 
+def historical_withdrawal(date, amount)
+  withdrawal_valid(amount)
+  @balance -= amount
+  @transactions << [date, -amount, balance]
+end
+
 private
 
 def withdrawal_valid(amount)
