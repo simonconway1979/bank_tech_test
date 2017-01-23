@@ -15,5 +15,11 @@ describe Account do
     expect(account.balance).to eq(10)
   end
 
+  it 'should decrease the balance when the user makes a withdrawal' do
+    account.deposit(10)
+    account.withdrawal(5)
+    expect(account.balance).to eq(5)
+  end
+
 
 end
