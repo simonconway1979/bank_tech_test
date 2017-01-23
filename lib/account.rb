@@ -26,7 +26,10 @@ def transactions
   @transactions
 end
 
-
+def historical_deposit(date, amount)
+  @balance +=amount
+  @transactions << [date, amount, balance]
+end
 
 private
 
@@ -35,6 +38,6 @@ def withdrawal_valid(amount)
 end
 
 
-binding.pry
+# binding.pry
 
 end
