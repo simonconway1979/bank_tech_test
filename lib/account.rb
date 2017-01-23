@@ -29,6 +29,7 @@ def transactions
 end
 
 def formatted_transactions
+  update_formatted_transactions
   @formatted_transactions
 end
 
@@ -41,14 +42,14 @@ def update_formatted_transactions
   @formatted_transactions = ["date       || credit    || debit     || balance"]
 
   @transactions.each do |transaction|
-    amount_string = -('%.02f' % transaction[1])
-    balance_string = '%.02f' % transaction[1]
+    amount_string = '%.02f' % transaction[1].abs
+    balance_string = '%.02f' % transaction[2]
     trailing_spaces = " " * (8 - amount_string.length)
     if transaction[1] >= 0
       formatted_text = transaction[0]+" || " + amount_string + trailing_spaces + "||         || " + balance_string
       @formatted_transactions << formatted_text
     else
-      formatted_text = transaction[0]+" ||         || " + (amount_string) + trailing_spaces + "|| " + balance_string
+      formatted_text = transaction[0]+" ||         || " + amount_string + trailing_spaces + "|| " + balance_string
       @formatted_transactions << formatted_text
     end
   end
@@ -72,6 +73,6 @@ def withdrawal_valid(amount)
   fail "Your balance is not sufficient to make this withdrawal" if amount > @balance
 end
 
-binding.pry
+# binding.pry
 
 end
