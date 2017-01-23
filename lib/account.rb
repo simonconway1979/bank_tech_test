@@ -39,7 +39,7 @@ class Account
   # 10/01/2012 || 1000.00||         || 1000.00
 
   def update_formatted_transactions
-    @formatted_transactions = ["date       || credit    || debit     || balance"]
+    @formatted_transactions = ["date       || credit  || debit   || balance"]
 
     @transactions.each do |transaction|
       amount_string = '%.02f' % transaction[1].abs
@@ -72,7 +72,7 @@ class Account
     @formatted_transactions.each do |text|
       output << text + "\n      "
     end
-    output
+    puts output
   end
 
   private
@@ -81,6 +81,11 @@ class Account
     fail "Your balance is not sufficient to make this withdrawal" if amount > @balance
   end
 
-# binding.pry
+  account = Account.new
+  account.historical_deposit("10/01/2012", 1000)
+  account.historical_deposit("13/01/2012", 2000)
+  account.historical_withdrawal("14/01/2012", 500)
+
+  binding.pry
 
 end

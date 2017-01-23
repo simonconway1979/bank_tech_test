@@ -65,26 +65,14 @@ describe Account do
     it 'should add a formatted transaction when a deposit is made' do
       account.historical_deposit("13/01/2012", 2000)
       expect(account.formatted_transactions).to eq(
-      ["date       || credit    || debit     || balance", "13/01/2012 || 2000.00 ||         || 2000.00"])
+      ["date       || credit  || debit   || balance", "13/01/2012 || 2000.00 ||         || 2000.00"])
     end
 
     it 'should add a formatted transaction when a withdrawal is made' do
       account.historical_deposit("13/01/2012", 2000)
       account.historical_withdrawal("14/01/2012", 500)
       expect(account.formatted_transactions).to eq(
-      ["date       || credit    || debit     || balance", "13/01/2012 || 2000.00 ||         || 2000.00", "14/01/2012 ||         || 500.00  || 1500.00"])
+      ["date       || credit  || debit   || balance", "13/01/2012 || 2000.00 ||         || 2000.00", "14/01/2012 ||         || 500.00  || 1500.00"])
     end
-
-    it 'should be able to print a statement in the correct format' do
-      account.historical_deposit("13/01/2012", 2000)
-      account.historical_withdrawal("14/01/2012", 500)
-      expect(account.statement).to eq("
-      date       || credit    || debit     || balance
-      13/01/2012 || 2000.00 ||         || 2000.00
-      14/01/2012 ||         || 500.00  || 1500.00
-      ")
-    end
-
   end
-
 end
