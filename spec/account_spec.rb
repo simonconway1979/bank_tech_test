@@ -38,6 +38,7 @@ describe Account do
       account.withdrawal(5)
       expect(account.transactions[0]).to eq([(Time.now.strftime("%d/%m/%Y")), -5])
     end
+    
 
   end
 
