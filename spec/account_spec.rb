@@ -30,15 +30,16 @@ describe Account do
 
     it 'should add a transaction including the date and amount when a deposit is made' do
       account.deposit(10)
-      expect(account.transactions[0]).to eq([(Time.now.strftime("%d/%m/%Y")), 10])
+      expect(account.transactions[-1]).to eq([(Time.now.strftime("%d/%m/%Y")), 10])
     end
 
     it 'should add a transaction including the date and amount when a withdrawal is made' do
       account.deposit(10)
       account.withdrawal(5)
-      expect(account.transactions[0]).to eq([(Time.now.strftime("%d/%m/%Y")), -5])
+      expect(account.transactions[-1]).to eq([(Time.now.strftime("%d/%m/%Y")), -5])
     end
-    
+
+binding.pry
 
   end
 

@@ -13,11 +13,12 @@ end
 
 def deposit(amount)
   @balance += amount
-  @transactions << [Time.now.strftime("%d/%m/%Y"), amount]
+  @transactions << [Time.now.strftime("%d/%m/%Y"), amount, balance]
 end
 
 def withdrawal(amount)
   @balance -= amount
+  @transactions << [Time.now.strftime("%d/%m/%Y"), -amount, balance]
 end
 
 def transactions
