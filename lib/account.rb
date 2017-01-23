@@ -22,10 +22,10 @@ def withdrawal(amount)
   @transactions << [Time.now.strftime("%d/%m/%Y"), -amount, balance]
 end
 
-
 def transactions
   @transactions
 end
+
 
 
 private

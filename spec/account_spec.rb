@@ -42,10 +42,13 @@ describe Account do
       account.withdrawal(5)
       expect(account.transactions[-1]).to eq([(Time.now.strftime("%d/%m/%Y")), -5, 5])
     end
-
-# binding.pry
-
   end
 
+  context 'Adding historical transactions' do
+    it 'should be able to add a historical transaction including the date and time of the transaction' do
+      account.historical_deposit("14/01/2012", 500)
+      expect(account.transactions[-1]).to eq([(14/01/2012, 500, 500])
+  end
+  
 
 end
