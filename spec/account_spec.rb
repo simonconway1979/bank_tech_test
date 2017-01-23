@@ -78,9 +78,11 @@ describe Account do
     it 'should be able to print a statement in the correct format' do
       account.historical_deposit("13/01/2012", 2000)
       account.historical_withdrawal("14/01/2012", 500)
-      expect(account.statement).to eq("date       || credit    || debit     || balance
+      expect(account.statement).to eq("
+      date       || credit    || debit     || balance
       13/01/2012 || 2000.00 ||         || 2000.00
-      14/01/2012 ||         || 500.00  || 1500.00")
+      14/01/2012 ||         || 500.00  || 1500.00
+      ")
     end
 
   end
